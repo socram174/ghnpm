@@ -1,0 +1,31 @@
+name: Publicar Paquete NPM
+
+on:
+  push:
+    branches:
+      - main  # Cambia a tu rama principal si es diferente
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write  # Permiso para escribir paquetes
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Usa la versión de Node que prefieras
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Instalar dependencias
+        run: npm install  # O npm install si no tienes package-lock.json
+
+      - name: Publicar paquete
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}  # Usa el token de GitHub para autenticación
