@@ -1,6 +1,6 @@
 {
   "name": "@socram174/ghnpm",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +12,6 @@
   "repository": "https://github.com/socram174/ghnpm.git",
   "publishConfig": {
   "registry": "https://npm.pkg.github.com"
-  } 
+  } ,
+  "files": ["index.js"]
 }
